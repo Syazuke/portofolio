@@ -296,15 +296,18 @@ void main() {
     opacity,
   ]);
 
+  // src/app/component/atoms/SideRays.jsx
+
   return (
-    <div className="">
+    <div className={`relative w-full min-h-screen ${className}`.trim()}>
+      {/* 1. Kunci kanvas WebGL agar selalu diam di latar belakang layar (fixed) */}
       <div
         ref={containerRef}
-        className={`side-rays-container ${className}`.trim()}
-      ></div>
-      <div className="absolute inset-0 z-10 justify-center py-16 pointer-events-auto">
-        {children}
-      </div>
+        className="fixed inset-0 z-0 pointer-events-none"
+      />
+
+      {/* 2. Tempat mengalir seluruh konten website (Navbar, Header, dll) */}
+      <div className="relative z-10 w-full min-h-screen">{children}</div>
     </div>
   );
 };
